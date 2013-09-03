@@ -30,17 +30,21 @@ namespace KarmarkarOriginal
                     Stopwatch sw = new Stopwatch();
                     sw.Start();
                     var kr = new KarmarkarRunner(tc.A, tc.b, tc.c, tc.gamma, tc.miu, tc.epsilon, tc.eF);
-                    Vector<double> result = kr.Run();
+                    Result result = kr.Run();
                     sw.Stop();
-                    
+
+                    Console.WriteLine("Algorithm finished in steps :");
+                    Console.WriteLine(result.steps);
+                    Console.WriteLine();
                     Console.WriteLine("Final values for x :");
-                    Console.WriteLine(result);
+                    Console.WriteLine(result.solution);
                     Console.WriteLine();
                     Console.WriteLine("Function value :");
-                    Console.WriteLine(tc.c*result);
+                    Console.WriteLine(tc.c*result.solution);
                     Console.WriteLine();
                     Console.WriteLine("Time Elapsed={0}", sw.Elapsed);
-                    Console.WriteLine(); 
+                    Console.WriteLine();
+                    Console.WriteLine("*******************************************************");
                     Console.WriteLine();
                 }
                 catch (Exception e)
@@ -64,7 +68,8 @@ namespace KarmarkarOriginal
                     new TestCaseSimple2x4(),
                     new TestCaseSimpleCornSoy(),
                     new TestCaseSimpleAluminumCopper(),
-                    new TestCaseSimpleWheatBarley()
+                    new TestCaseSimpleWheatBarley(),
+                    new TestCaseBigger()
                 };
 
             return problems;

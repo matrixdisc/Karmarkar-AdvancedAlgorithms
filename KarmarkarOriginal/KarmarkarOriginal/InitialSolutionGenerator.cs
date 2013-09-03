@@ -60,7 +60,7 @@ namespace KarmarkarOriginal
             modifiedC = GenerateModifiedCoeficientsVector(c, M);
             karmarkarAlgorithm = new KarmarkarAlgorithm(modifiedA, b, modifiedC, x, initialStoppingCriterion, gamma);
             // Modified problem P* with the artificial variable x0a is solved by the Karmakrar's Algorithm
-            Vector<double> initialSolutionWithArtificialVariable = karmarkarAlgorithm.Run();
+            Vector<double> initialSolutionWithArtificialVariable = karmarkarAlgorithm.Run().solution;
             // Solution of the problem P* is the correct initial point for problem P only after removing the artificial variable
             Vector<double> initialSolution = RemoveArtificialVariableFrom(initialSolutionWithArtificialVariable);
             return initialSolution;

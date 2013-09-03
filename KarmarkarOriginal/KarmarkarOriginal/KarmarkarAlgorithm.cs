@@ -70,7 +70,7 @@ namespace KarmarkarOriginal
         /// Main method of the algorithm. Starting from the initial, internal point of the polytope, calculates a series of internal points with monotonously increasing value, converging to the optimal solution. Defined in Chapter 2
         /// </summary>
         /// <returns>Optimal solution for original problem P</returns>
-        public Vector<double> Run()
+        public Result Run()
         {
             int k = 0;
             while (!stoppingCriterion.IsSatisfied(c, x, xPrevious)) // Algorithm ends when the value of the optimized function has changed by less than epsilon between the last iterations
@@ -90,7 +90,9 @@ namespace KarmarkarOriginal
                 var profit = x*c;                                   // Current value of the maximized function
                 k++;
             }
-            return x;
+
+            Result result = new Result(x, k);
+            return result;
         }
 
         private bool IsUnbounded(Vector<double> hv)
@@ -110,6 +112,18 @@ namespace KarmarkarOriginal
                     min = current;
             }
             return min;
+        }
+    }
+
+    public class Result
+    {
+        public Vector<double> solution;
+        public int steps;
+
+        public Result(Vector<double> solution, int steps)
+        {
+            this.solution = solution;
+            this.steps = steps;
         }
     }
 }

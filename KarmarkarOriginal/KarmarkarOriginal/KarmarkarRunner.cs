@@ -67,7 +67,7 @@ namespace KarmarkarOriginal
         /// Runs modular parts of the algorithm in appropriate order.
         /// </summary>
         /// <returns></returns>
-        public Vector<double> Run()
+        public Result Run()
         {
             Vector<double> initialSolution = initialSolutionGenerator.GenerateInitialSolution(A, c, b, miu, initialStoppingCriterion, gamma);
             karmarkarAlgorithm = new KarmarkarAlgorithm(A, b, c, initialSolution, regularStoppingCriterion, gamma);
